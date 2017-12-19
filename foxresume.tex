@@ -1,0 +1,216 @@
+\documentclass[paper=a4,fontsize=11pt]{scrartcl}
+                            
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{url}
+\usepackage[margin=0in]{geometry}
+\usepackage{adjustbox}
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+
+\definecolor{myDarkGray}{RGB}{42,47,66}
+\definecolor{myOffWhite}{RGB}{240,240,240}
+\definecolor{myLightGray}{RGB}{200,200,200}
+
+\NewDocumentCommand{\myrule}{O{1pt} O{3pt} O{black}}{%
+  \par\nobreak % don't break a page here
+  \kern\the\prevdepth % don't take into account the depth of the preceding line
+  \kern#2 % space before the rule
+  {\color{#3}\hrule height #1 width\hsize} % the rule
+  \kern#2 % space after the rule
+  \nointerlineskip % no additional space after the rule
+}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+\newcommand{\MyName}[2]{
+	\noindent
+	\colorbox{myDarkGray}{
+		\parbox{8.27in}{
+		\vbox to 1in {
+			\vfil
+			\begin{minipage}[t]{0.8\textwidth}
+			\textcolor{white}{
+				\textbf{\Huge #1}\\
+				\textbf{\Large #2}
+			}
+			\end{minipage}
+			\vfil
+		}
+		}
+		\par
+	}
+}
+
+\newcommand{\MyNarrative}[1]{
+	\begin{changemargin}{.1in}{.1in}
+	#1
+	\end{changemargin}
+}
+
+\newcommand{\PersonalData}[4]{
+	\textbf{Personal Data}
+	\myrule[1pt][5pt]
+	\textbf{Address}
+	\newline
+	#1
+	\newline
+	#2
+	\newline
+	\textbf{Phone}
+	\newline
+	#3
+	\newline
+	\textbf{E-mail}
+	\newline
+	#4
+	\vspace(5pt)
+}
+
+\newcommand{\KeySkills}[5]{
+	\textbf{Key Skills}
+	\myrule[1pt][5pt]
+	#1
+	\newline
+	#2
+	\newline
+	#3
+	\newline
+	#4
+	\newline
+	#5
+	\vspace(5pt)
+}
+
+\newcommand{\Platforms}[5]{
+	\textbf{Targeted Platforms}
+	\myrule[1pt][5pt]
+	#1
+	\newline
+	#2
+	\newline
+	#3
+	\newline
+	#4
+	\newline
+	#5
+	\vspace(5pt)
+}
+
+\newcommand{\TechnicalSkills}[4]{
+	\textbf{Technologies}
+	\myrule[1pt][5pt]
+	#1
+	\newline
+	#2
+	\newline
+	#3
+	\newline
+	#4
+	\vspace(5pt)
+}
+
+\newcommand{\Languages}[7]{
+	\textbf{Languages}
+	\myrule[1pt][5pt]
+	#1
+	\newline
+	#2
+	\newline
+	#3
+	\newline
+	#4
+	\newline
+	#5
+	\newline
+	#6
+	\newline
+	#7
+	\vspace(5pt)
+}
+
+\newcommand{\Experience}[1]{
+	\begin{changemargin}{.1in}{.1in}
+	\textbf{Experience}
+	\myrule[1pt][5pt]
+	\end{changemargin}
+}
+
+\newcommand{\EducationHeader}[1]{
+	\begin{changemargin}{.1in}{.1in}
+	\textbf{Education}
+	\myrule[1pt][5pt]
+	\end{changemargin}
+}
+
+\newcommand{\SchoolEntry}[3]{
+
+	\setlength{\parskip}{.1em}
+	\begin{changemargin}{.1in}{.1in}
+		\begin{minipage}[t]{1.5in}
+		\textbf{#1}
+		\end{minipage}
+		\begin{minipage}[t]{4.5in}			
+	\begin{flushleft}
+			\textbf{#2}
+	\end{flushleft}
+			\textbf{#3}
+		\end{minipage}
+	\end{changemargin}
+	\vspace{15pt}
+}
+
+\newcommand{\References}{
+	\begin{changemargin}{.1in}{.1in}
+	\textbf{References}
+	\myrule[1pt][5pt]
+	\textbf{Available upon request}
+	\end{changemargin}
+}
+
+\begin{document}
+
+\MyName{Justin Fox}{Software Developer / Project Manager / Team Manager}
+	%column 1
+\begin{minipage}[t]{0.75\linewidth}
+	\vspace{0pt}
+	\colorbox{myOffWhite}{
+		\vbox to 10.5in{
+			\MyNarrative{An experienced engineer with a diverse background of software, project management and team management experience. Software development skills span a wide range of modern platforms and a variety of different software development languages. Management experience includes more than 5 years as a Branch Head, charged with directing a team of 9 developers and a vast portfolio of Microsoft Windows based applications. Additional management experience includes the level 1 oversight of multiple \$1M+ customer funded programs with a proven track record of finishing on-budget and on-time.}
+			\Experience{}
+			\EducationHeader{}
+			\SchoolEntry{December 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
+			\SchoolEntry{August 2006}{Georgia Institute of Technology}{Master of Science Electrical Engineering}
+			\References
+			\vfil
+		}
+	}
+\end{minipage}%
+%column2
+\begin{minipage}[t]{0.2\linewidth}
+	\vspace{0pt}
+	\vbox to 10.5in{
+		\colorbox{myLightGray}{
+			\vfil
+			\PersonalData{975 Denmeade Walk SW}{Marietta, GA 30064}{404.903.6413}{gte941y@gmail.com}
+			\newline
+			\KeySkills{Software Development}{Program Management}{Team Management}{Budget Management}{System Engineering}
+			\newline
+			\Platforms{Windows Desktop}{Windows Mobile}{iOS}{Android}{Postgres}{Ubuntu}
+			\newline
+			\TechnicalSkills{WPF}{WinForms}{Entity Framework}{WCF}{REST}
+			\newline
+			\Languages{C\#}{C++}{Swift}{Java}{Kotlin}{SQL}{Javascript}
+		}
+	}
+\end{minipage}
+
+\end{document}
