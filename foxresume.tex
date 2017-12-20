@@ -172,18 +172,26 @@
 	\\[6pt]
 }
 %
-\newcommand{\Languages}[8]{
+\newcommand{\Languages}[1]{
 	\textbf{Languages}
 	\myrule[1pt][5pt]
 	\begin{tabular}{ l r }
-	\small #1 &
-	\small #2\\
-	\small #3 &
-	\small #4\\
-	\small #5 &
-	\small #6\\
-	\small #7 &
-	\small #8\\
+	\small C\# &
+	\small \expertscale\\
+	\small Swift &
+	\small \profexpertscale\\
+	\small C++ &
+	\small \proficientscale\\
+	\small Java &
+	\small \proficientscale\\
+	\small Javascript &
+	\small \proficientscale\\
+	\small Kotlin &
+	\small \beginnerprofscale\\
+	\small SQL &
+	\small \beginnerprofscale\\
+	\small Python &
+	\small \beginnerscale\\
 	\end{tabular}
 	\\[6pt]
 }
@@ -224,9 +232,9 @@
 		\end{minipage}
 		\begin{minipage}[t]{5in}			
 			\begin{flushleft}
-				\textbf{#2}
+				\textbf{#2}\\
+				\textit{\textbf{#3}}
 			\end{flushleft}
-			\textbf{#3}
 		\end{minipage}
 	\end{changemargin}
 	\vspace{5pt}
@@ -277,8 +285,8 @@
 			\ExperienceEntry{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Functioned as Tactical Aircraft Defensive Suite (TADS) Program Manager overseeing a portfolio of studies intended to improve and federate the individual components of Electronic Warfare defensive suite on-board these platforms. Also functioned as an associate branch head during this time period}{--System Engineering --Project Management --Team Management}
 			\ExperienceEntry{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for the ALQ-213 Subsystem. Provided general System Engineering support for multiple ALQ-213 releases, helping to define requirements, align the needs of various stakeholders and validate the software behavior through SIL and flight test. Functioned as level 1 project director over a major release for the ALQ-213 program.}{--Windows Application Development --System Engineering --Project Management}
 			\EducationHeader{}
-			\SchoolEntry{Dec 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
 			\SchoolEntry{Aug 2006}{Georgia Institute of Technology}{Master of Science Electrical Engineering}
+			\SchoolEntry{Dec 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
 			\vfill
 			\References
 		}
@@ -293,8 +301,7 @@
 			\Platforms{Windows Desktop}{iOS}{Windows Mobile}{Android}{Postgres}{Ubuntu}
 			\DeveloperTools{Git}{Atlassian Suite}{MKS}{Visual Studio}{Android Studio}{XCode}
 			\TechnicalSkills{WPF}{UWP}{WinForms}{WCF}{Entity Framework}{REST}{Angular}{Node}
-			%\newarray{languagesArray}{C\#,\expertscale,C++,\proficientscale,Swift,\profexpert,Java,\proficientscale,Kotlin,\beginnerprofscale,SQL,\beginnerprofscale,Javascript,\proficientscale,Python,\beginnerscale}%
-			\Languages{C\#}{\expertscale}{C++}{\proficientscale}{Swift}{\profexpertscale}{Java}{\proficientscale}%{Kotlin}{\beginnerprofscale}{SQL}{\beginnerprofscale}{Javascript}{\proficientscale}{Python}{\beginnerscale}
+			\Languages{}
 			\Certifications{Certified Scrum Master}
 			\vfill
 		}
