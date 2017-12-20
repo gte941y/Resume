@@ -1,4 +1,4 @@
-\documentclass[paper=a4,fontsize=11pt]{scrartcl}
+\documentclass[paper=a4,fontsize=11pt]{article}
                             
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -11,11 +11,14 @@
 \usepackage{adjustbox}
 \usepackage{xparse}% http://ctan.org/pkg/xparse
 \usepackage{lipsum}% http://ctan.org/pkg/lipsum
-
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+%
 \definecolor{myDarkGray}{RGB}{42,47,66}
 \definecolor{myOffWhite}{RGB}{240,240,240}
 \definecolor{myLightGray}{RGB}{200,200,200}
-
+%
 \NewDocumentCommand{\myrule}{O{1pt} O{3pt} O{black}}{%
   \par\nobreak % don't break a page here
   \kern\the\prevdepth % don't take into account the depth of the preceding line
@@ -24,17 +27,17 @@
   \kern#2 % space after the rule
   \nointerlineskip % no additional space after the rule
 }
-
+%
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist
-
+%
 \frenchspacing              % Better looking spacings after periods
 \pagestyle{empty}           % No pagenumbers/headers/footers
-
+%
 \newcommand{\MyName}[2]{
 	\noindent
 	\colorbox{myDarkGray}{
-		\parbox{8.27in}{
+		\parbox{8.5in}{
 		\vbox to 1in {
 			\vfil
 			\begin{minipage}[t]{0.8\textwidth}
@@ -49,168 +52,242 @@
 		\par
 	}
 }
-
+%
+\newcommand{\getelement}[2]{% \getelement{<array>}{<num>}
+  \@ifundefined{#1@0}% <array> not defined
+    {\@latex@error{Array #1 undefined}\@ehc}{}
+  \expandafter\ifnum\csname #1@0\endcsname<#2 % <num> out of range
+    \@latex@error{Array #1 only has \csname #1@0\endcsname\space elements}\@ehc
+  \fi
+  \csname #1@#2\endcsname% Print element
+}
+%
+\newcommand{\filledmarker}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.6,circle,fill=black](){};}}}
+\newcommand{\unfilledmarker}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.6,circle,fill=none](){};}}}
+%
+\newcommand{\beginnerscale}{
+	\filledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker
+}
+\newcommand{\beginnerprofscale}{
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker
+}
+\newcommand{\proficientscale}{
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\unfilledmarker\hspace{.1mm}
+	\unfilledmarker
+}
+\newcommand{\profexpertscale}{
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\unfilledmarker
+}
+\newcommand{\expertscale}{
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker\hspace{.1mm}
+	\filledmarker
+}
+%
 \newcommand{\MyNarrative}[1]{
 	\begin{changemargin}{.1in}{.1in}
 	#1
 	\end{changemargin}
 }
-
+%
 \newcommand{\PersonalData}[4]{
 	\textbf{Personal Data}
 	\myrule[1pt][5pt]
-	\textbf{Address}
-	\newline
-	#1
-	\newline
-	#2
-	\newline
-	\textbf{Phone}
-	\newline
-	#3
-	\newline
-	\textbf{E-mail}
-	\newline
-	#4
-	\vspace(5pt)
+	\textbf{Address}\\
+	#1\\
+	#2\\
+	\\[1pt]
+	\textbf{Phone}\\
+	#3\\
+	\\[1pt]
+	\textbf{E-mail}\\
+	#4\\
+	\\[1pt]
+	\textbf{Social}\\
+	\href{https://www.linkedin.com/in/justinrfox}{LinkedIn}\\
+	\\[6pt]
 }
-
+%
 \newcommand{\KeySkills}[5]{
 	\textbf{Key Skills}
 	\myrule[1pt][5pt]
-	#1
-	\newline
-	#2
-	\newline
-	#3
-	\newline
-	#4
-	\newline
-	#5
-	\vspace(5pt)
+	\small #1\\
+	\small #2\\
+	\small #3\\
+	\small #4\\
+	\small #5\\
+	\\[6pt]
 }
-
-\newcommand{\Platforms}[5]{
+%
+\newcommand{\Platforms}[6]{
 	\textbf{Targeted Platforms}
 	\myrule[1pt][5pt]
-	#1
-	\newline
-	#2
-	\newline
-	#3
-	\newline
-	#4
-	\newline
-	#5
-	\vspace(5pt)
+	\begin{tabular}{ l r }
+	\small #1 &
+	\small #2\\
+	\small #3 &
+	\small #4\\
+	\small #5 &
+	\small #6\\
+	\end{tabular}
+	\\[6pt]
 }
-
-\newcommand{\TechnicalSkills}[4]{
+%
+\newcommand{\TechnicalSkills}[8]{
 	\textbf{Technologies}
 	\myrule[1pt][5pt]
-	#1
-	\newline
-	#2
-	\newline
-	#3
-	\newline
-	#4
-	\vspace(5pt)
+	\begin{tabular}{ l r }
+  		\small #1 & \small #2 \\
+ 		\small #3 & \small #4 \\
+  		\small #5 & \small #6 \\
+		\small #7 & \small #8 \\
+	\end{tabular}
+	\\[6pt]
 }
-
-\newcommand{\Languages}[7]{
+%
+\newcommand{\Languages}[8]{
 	\textbf{Languages}
 	\myrule[1pt][5pt]
-	#1
-	\newline
-	#2
-	\newline
-	#3
-	\newline
-	#4
-	\newline
-	#5
-	\newline
-	#6
-	\newline
-	#7
-	\vspace(5pt)
+	\begin{tabular}{ l r }
+	\small #1 &
+	\small #2\\
+	\small #3 &
+	\small #4\\
+	\small #5 &
+	\small #6\\
+	\small #7 &
+	\small #8\\
+	\end{tabular}
+	\\[6pt]
 }
-
-\newcommand{\Experience}[1]{
-	\begin{changemargin}{.1in}{.1in}
-	\textbf{Experience}
+%
+\newcommand{\DeveloperTools}[6]{
+	\textbf{Development Tools}
 	\myrule[1pt][5pt]
-	\end{changemargin}
+	\begin{tabular}{ l r }
+	\small #1 &
+	\small #2\\
+	\small #3 &
+	\small #4\\
+	\small #5 &
+	\small #6\\
+	\end{tabular}
+	\\[6pt]
 }
-
+%
+\newcommand{\Certifications}[1]{
+	\textbf{Certifications}
+	\myrule[1pt][5pt]
+	#1
+	\\[6pt]
+}
+%
 \newcommand{\EducationHeader}[1]{
 	\begin{changemargin}{.1in}{.1in}
-	\textbf{Education}
+	\textbf{\Large Education}
 	\myrule[1pt][5pt]
 	\end{changemargin}
 }
-
+%
 \newcommand{\SchoolEntry}[3]{
-
 	\setlength{\parskip}{.1em}
 	\begin{changemargin}{.1in}{.1in}
-		\begin{minipage}[t]{1.5in}
+		\begin{minipage}[t]{1in}
 		\textbf{#1}
 		\end{minipage}
-		\begin{minipage}[t]{4.5in}			
-	\begin{flushleft}
-			\textbf{#2}
-	\end{flushleft}
+		\begin{minipage}[t]{5in}			
+			\begin{flushleft}
+				\textbf{#2}
+			\end{flushleft}
 			\textbf{#3}
 		\end{minipage}
 	\end{changemargin}
-	\vspace{15pt}
+	\vspace{5pt}
 }
-
+%
 \newcommand{\References}{
 	\begin{changemargin}{.1in}{.1in}
-	\textbf{References}
+	\textbf{\Large References}
 	\myrule[1pt][5pt]
 	\textbf{Available upon request}
 	\end{changemargin}
 }
-
-\begin{document}
-
-\MyName{Justin Fox}{Software Developer / Project Manager / Team Manager}
-	%column 1
-\begin{minipage}[t]{0.75\linewidth}
-	\vspace{0pt}
+%
+\newcommand{\ExperienceHeader}{
+	\begin{changemargin}{.1in}{.1in}
+	\textbf{\Large Experience}
+	\myrule[1pt][5pt]
+	\end{changemargin}
+}
+%
+\newcommand{\ExperienceEntry}[5]{
+		\begin{minipage}[t]{1in}
+			\begin{flushleft}
+				\textbf{#1}
+			\end{flushleft}
+		\end{minipage}
+		\begin{minipage}[t]{5in}	
+			\begin{flushleft}
+				\textbf{#2}\\
+				\textit{\textbf{#3}}\\
+				#4\\[4pt]
+				\small #5
+			\end{flushleft}
+		\end{minipage}
+\\[6pt]
+}
+%
+\begin{document}%
+\MyName{Justin Fox}{Software Developer / Project Manager / Team Leader}
+\begin{minipage}[t]{0.73\linewidth}
 	\colorbox{myOffWhite}{
-		\vbox to 10.5in{
-			\MyNarrative{An experienced engineer with a diverse background of software, project management and team management experience. Software development skills span a wide range of modern platforms and a variety of different software development languages. Management experience includes more than 5 years as a Branch Head, charged with directing a team of 9 developers and a vast portfolio of Microsoft Windows based applications. Additional management experience includes the level 1 oversight of multiple \$1M+ customer funded programs with a proven track record of finishing on-budget and on-time.}
-			\Experience{}
+		\vbox to 9.8in{
+			\vfill
+			\MyNarrative{An experienced engineer with a diverse background spanning software development, project management and team management. Software development skills cover a wide range of modern platforms and a variety of different software development languages. Management experience includes more than 5 years as a Branch Head, charged with directing a team of software developers and curating a portfolio of Microsoft Windows based applications. Additional management experience includes the level 1 oversight of multiple customer funded programs with individual budgets in excess of \$1M and a proven track record of finishing on-budget and on-time.}
+			\ExperienceHeader
+			\ExperienceEntry{Jun 2016 - Present}{Consultant}{Deep Fried Software}{Sole software developer responsible for creating and maintaining a web service facilitating parent teacher communication at local preschools. The service includes a web portal as well as Android and iOS native applications.}{--Full Stack Web Development	--Android Development --iOS Development}
+			\ExperienceEntry{Jun 2012 - Present}{Branch Head / Senior Research Engineer}{Georgia Tech Research Institute}{Responsible for leading a team of 8-12 software developers primarily focused on developing Microsoft Windows based desktop applications. Functioned as lead developer across many of the projects developed within the group during this time period. Managed multiple programs as level 1 project director.}{--Windows Application Development	--Team Management	--Project Management}
+			\ExperienceEntry{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Functioned as Tactical Aircraft Defensive Suite (TADS) Program Manager overseeing a portfolio of studies intended to improve and federate the individual components of Electronic Warfare defensive suite on-board these platforms. Also functioned as an associate branch head during this time period}{--System Engineering --Project Management --Team Management}
+			\ExperienceEntry{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for the ALQ-213 Subsystem. Provided general System Engineering support for multiple ALQ-213 releases, helping to define requirements, align the needs of various stakeholders and validate the software behavior through SIL and flight test. Functioned as level 1 project director over a major release for the ALQ-213 program.}{--Windows Application Development --System Engineering --Project Management}
 			\EducationHeader{}
-			\SchoolEntry{December 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
-			\SchoolEntry{August 2006}{Georgia Institute of Technology}{Master of Science Electrical Engineering}
+			\SchoolEntry{Dec 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
+			\SchoolEntry{Aug 2006}{Georgia Institute of Technology}{Master of Science Electrical Engineering}
+			\vfill
 			\References
-			\vfil
 		}
 	}
 \end{minipage}%
-%column2
-\begin{minipage}[t]{0.2\linewidth}
-	\vspace{0pt}
-	\vbox to 10.5in{
-		\colorbox{myLightGray}{
-			\vfil
+\hfill
+\begin{minipage}[t]{0.25\linewidth}
+	\colorbox{myLightGray}{
+	\vbox to 9.8in{
 			\PersonalData{975 Denmeade Walk SW}{Marietta, GA 30064}{404.903.6413}{gte941y@gmail.com}
-			\newline
 			\KeySkills{Software Development}{Program Management}{Team Management}{Budget Management}{System Engineering}
-			\newline
-			\Platforms{Windows Desktop}{Windows Mobile}{iOS}{Android}{Postgres}{Ubuntu}
-			\newline
-			\TechnicalSkills{WPF}{WinForms}{Entity Framework}{WCF}{REST}
-			\newline
-			\Languages{C\#}{C++}{Swift}{Java}{Kotlin}{SQL}{Javascript}
+			\Platforms{Windows Desktop}{iOS}{Windows Mobile}{Android}{Postgres}{Ubuntu}
+			\DeveloperTools{Git}{Atlassian Suite}{MKS}{Visual Studio}{Android Studio}{XCode}
+			\TechnicalSkills{WPF}{UWP}{WinForms}{WCF}{Entity Framework}{REST}{Angular}{Node}
+			%\newarray{languagesArray}{C\#,\expertscale,C++,\proficientscale,Swift,\profexpert,Java,\proficientscale,Kotlin,\beginnerprofscale,SQL,\beginnerprofscale,Javascript,\proficientscale,Python,\beginnerscale}%
+			\Languages{C\#}{\expertscale}{C++}{\proficientscale}{Swift}{\profexpertscale}{Java}{\proficientscale}%{Kotlin}{\beginnerprofscale}{SQL}{\beginnerprofscale}{Javascript}{\proficientscale}{Python}{\beginnerscale}
+			\Certifications{Certified Scrum Master}
+			\vfill
 		}
 	}
-\end{minipage}
-
-\end{document}
+\end{minipage}%
+\end{document}%
