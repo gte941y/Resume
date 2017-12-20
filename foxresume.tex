@@ -12,6 +12,7 @@
 \usepackage{xparse}% http://ctan.org/pkg/xparse
 \usepackage{lipsum}% http://ctan.org/pkg/lipsum
 \usepackage{hyperref}
+\usepackage{ragged2e}
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 %
@@ -52,6 +53,7 @@
 			\begin{minipage}[t]{0.8\textwidth}
 			\textcolor{white}{
 				\textbf{\Huge #1}\\
+				\vspace{5pt}\\
 				\textbf{\Large #2}
 			}
 			\end{minipage}
@@ -160,14 +162,15 @@
 	\\[6pt]
 }
 %
-\newcommand{\TechnicalSkills}[8]{
-	\textbf{Technologies}
+\newcommand{\Frameworks}[0]{
+	\textbf{Software Frameworks}
 	\myrule[1pt][5pt]
 	\begin{tabular}{ l r }
-  		\small #1 & \small #2 \\
- 		\small #3 & \small #4 \\
-  		\small #5 & \small #6 \\
-		\small #7 & \small #8 \\
+  		\small WPF & \small UWP \\
+ 		\small WinForms & \small WCF \\
+  		\small Alamofire & \small Entity Framework \\
+		\small Angular & \small Node \\
+		\small Dagger & \small Retrofit \\
 	\end{tabular}
 	\\[6pt]
 }
@@ -225,7 +228,6 @@
 }
 %
 \newcommand{\SchoolEntry}[3]{
-	\setlength{\parskip}{.1em}
 	\begin{changemargin}{.1in}{.1in}
 		\begin{minipage}[t]{1in}
 		\textbf{#1}
@@ -237,15 +239,13 @@
 			\end{flushleft}
 		\end{minipage}
 	\end{changemargin}
-	\vspace{5pt}
+	\vspace{1pt}
 }
 %
 \newcommand{\References}{
-	\begin{changemargin}{.1in}{.1in}
-	\textbf{\Large References}
+	\textbf{References}
 	\myrule[1pt][5pt]
-	\textbf{Available upon request}
-	\end{changemargin}
+	Available upon request.
 }
 %
 \newcommand{\ExperienceHeader}{
@@ -265,7 +265,7 @@
 			\begin{flushleft}
 				\textbf{#2}\\
 				\textit{\textbf{#3}}\\
-				#4\\[4pt]
+				\noindent \justifying{#4}\\[4pt]
 				\small #5
 			\end{flushleft}
 		\end{minipage}
@@ -278,17 +278,16 @@
 	\colorbox{myOffWhite}{
 		\vbox to 9.8in{
 			\vfill
-			\MyNarrative{An experienced engineer with a diverse background spanning software development, project management and team management. Software development skills cover a wide range of modern platforms and a variety of different software development languages. Management experience includes more than 5 years as a Branch Head, charged with directing a team of software developers and curating a portfolio of Microsoft Windows based applications. Additional management experience includes the level 1 oversight of multiple customer funded programs with individual budgets in excess of \$1M and a proven track record of finishing on-budget and on-time.}
+			\MyNarrative{An experienced engineer with a diverse background spanning software development, system engineering, project management and team management. Software development skills cover a wide range of modern platforms and a variety of different software development languages. Management experience includes more than 5 years as a Branch Head, charged with directing a team of software developers and curating a portfolio of Microsoft Windows based applications. Additional management experience includes the level 1 oversight of multiple customer funded programs with individual budgets in excess of \$1M and a proven track record of finishing on budget and on time.}
 			\ExperienceHeader
-			\ExperienceEntry{Jun 2016 - Present}{Consultant}{Deep Fried Software}{Sole software developer responsible for creating and maintaining a web service facilitating parent teacher communication at local preschools. The service includes a web portal as well as Android and iOS native applications. The web portal can be accessed at \url{www.hahohe.com}.}{--Full Stack Web Development	--Android Development --iOS Development}
-			\ExperienceEntry{Jun 2012 - Present}{Branch Head / Senior Research Engineer}{Georgia Tech Research Institute}{Responsible for leading a team of 8-12 software developers primarily focused on developing Microsoft Windows based desktop applications. Functioned as lead developer across many of the projects developed within the group during this time period. Managed multiple programs as level 1 project director.}{--Windows Application Development	--Team Management	--Project Management}
-			\ExperienceEntry{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Functioned as Tactical Aircraft Defensive Suite (TADS) Program Manager overseeing a portfolio of studies intended to improve and federate the individual components of Electronic Warfare defensive suite on-board these platforms. Also functioned as an associate branch head during this time period}{--System Engineering --Project Management --Team Management}
-			\ExperienceEntry{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for the ALQ-213 Subsystem. Provided general System Engineering support for multiple ALQ-213 releases, helping to define requirements, align the needs of various stakeholders and validate the software behavior through SIL and flight test. Functioned as level 1 project director over a major release for the ALQ-213 program.}{--Windows Application Development --System Engineering --Project Management}
+			\ExperienceEntry{Jun 2016 - Present}{Consultant}{Deep Fried Software}{Sole software developer responsible for creating and maintaining a web service facilitating parent teacher communication at local preschools. The service includes a web portal as well as Android and iOS native applications. The web portal can be accessed at \url{www.hahohe.com} and the apps can be downloaded from the Apple App Store or Google Play Store.}{--Full Stack Web Development	--Android Development --iOS Development}
+			\ExperienceEntry{Jun 2012 - Present}{Branch Head / Senior Research Engineer}{Georgia Tech Research Institute}{Responsible for leading a team of 8-12 software developers primarily focused on developing Microsoft Windows based desktop applications. Functioned as lead developer across many of the projects developed within the group helping to establish requirements, define an architecture, then shape and implement the design. Established an agile culture requiring daily communication within the team as well as continuous integration and delivery. Managed multiple programs as level 1 project director.}{--Windows Application Development	--Team Management	--Project Management}
+			\ExperienceEntry{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Program Manager of the Tactical Aircraft Defensive Suite (TADS) Program which consisted of a continually evolving portfolio of studies intended to improve the integration among the individual systems comprising Electronic Warfare suite on-board the platforms employing the ALQ-213. Responsibilities included general program oversight, consistent customer communication and participation in a number of the studies. The studies varied from hardware-in-the-loop lab testing, range testing, software development and theoretical studies. Additionally charged with hosting a bi-annual TADS team meeting that included an audience comprised of $>$50 attendees from Government and Industry.}{--System Engineering --Project Management --Team Management}
+			\ExperienceEntry{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for the ALQ-213 Subsystem. Provided general System Engineering support for multiple ALQ-213 OFP releases, helping to define requirements, align the needs of various stakeholders and validate the software behavior through SIL and flight test. Functioned as level 1 project director over a major release for the ALQ-213 program.}{--Windows Application Development --System Engineering --Project Management}
 			\EducationHeader{}
 			\SchoolEntry{Aug 2006}{Georgia Institute of Technology}{Master of Science Electrical Engineering}
 			\SchoolEntry{Dec 2003}{Georgia Institute of Technology}{Bachelor of Science Electrical Engineering}
 			\vfill
-			\References
 		}
 	}
 \end{minipage}%
@@ -296,13 +295,14 @@
 \begin{minipage}[t]{0.25\linewidth}
 	\colorbox{myLightGray}{
 	\vbox to 9.8in{
-			\PersonalData{975 Denmeade Walk SW}{Marietta, GA 30064}{404.903.6413}{gte941y@gmail.com}
+			\PersonalData{975 Denmeade Walk SW}{Marietta, GA 30064}{404.903.1269}{gte941y@gmail.com}
 			\KeySkills{Software Development}{Program Management}{Team Management}{Budget Management}{System Engineering}
 			\Platforms{Windows Desktop}{iOS}{Windows Mobile}{Android}{Postgres}{Ubuntu}
 			\DeveloperTools{Git}{Atlassian Suite}{MKS}{Visual Studio}{Android Studio}{XCode}
-			\TechnicalSkills{WPF}{UWP}{WinForms}{WCF}{Entity Framework}{REST}{Angular}{Node}
+			\Frameworks
 			\Languages{}
 			\Certifications{Certified Scrum Master}
+			\References
 			\vfill
 		}
 	}
