@@ -20,6 +20,7 @@
 \definecolor{myDarkGray}{RGB}{42,47,66}
 \definecolor{myOffWhite}{RGB}{240,240,240}
 \definecolor{myLightGray}{RGB}{200,200,200}
+\definecolor{myWhite}{RGB}{255,255,255}
 %
 \NewDocumentCommand{\myrule}{O{1pt} O{3pt} O{black}}{%
   \par\nobreak % don't break a page here
@@ -165,17 +166,17 @@
 	\small \expertscale\\
 	\small C++ &
 	\small \profexpertscale\\
-	\small Golang &
-	\small \proficientscale\\
 	\small Dart/Flutter &
 	\small \proficientscale\\
 	\small SQL &
 	\small \beginnerprofscale\\
 	\small Javascript &
-	\small \beginnerscale\\
+	\small \beginnerprofscale\\
 	\small Python &
-	\small \beginnerscale\\
+	\small \beginnerprofscale\\
 	\small Matlab &
+	\small \beginnerprofscale\\
+	\small Rust &
 	\small \beginnerscale\\
 	\end{tabular}
 	\\[6pt]
@@ -200,7 +201,16 @@
 \newcommand{\Certifications}[1]{
 	\textbf{Certifications}
 	\myrule[1pt][5pt]
-	#1
+	\small #1\\
+	\\[6pt]
+}
+%
+\newcommand{\Interests}[3]{
+	\textbf{Research Interests}
+	\myrule[1pt][5pt]
+	\small #1\\
+	\small #2\\
+	\small #3\\
 	\\[6pt]
 }
 %
@@ -270,19 +280,77 @@
 \\[6pt]
 }
 %
+\newcommand{\ExperienceEntryFullWidth}[5]{
+	\begin{minipage}[t]{1in}
+		\begin{flushleft}
+			\textbf{#1}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.86\linewidth}	
+		\begin{flushleft}
+			\textbf{#2}\\
+			\textit{\textbf{#3}}\\
+			\noindent \justifying{#4}\\[4pt]
+			\small #5
+		\end{flushleft}
+	\end{minipage}
+\\[6pt]
+}
+%
 \begin{document}%
-\MyName{Justin Fox}{Software Developer / Project Manager / Team Leader}
+\MyName{Justin Fox}{Project Manager / Team Leader / Software Engineer}
 \begin{minipage}[t]{0.73\linewidth}
-	\colorbox{myOffWhite}{
+	\colorbox{myWhite}{
 		\vbox to 9.8in{
-			\vfill
-			\MyNarrative{An experienced engineer with a diverse background spanning software development, system engineering, project management and functional team management. Software development skills cover a wide range of modern platforms and a variety of different software development environments. Management experience includes 6 years serving as a Branch Head, charged with directing a team of software developers and curating a portfolio of Microsoft Windows based applications. Functioned as a level 1 Project Director over multiple customer funded programs with individual budgets in excess of \$1M and a proven track record of finishing on time and on budget.}
+			\MyNarrative{An experienced engineer with a diverse background spanning software development, 
+			system engineering, project management and functional team management. Software development 
+			skills cover a wide range of modern platforms and a variety of different software development 
+			environments. Management experience includes 8 years serving as a Branch Head, charged with directing 
+			a team of software developers and curating a wide portfolio of applications across different deployment 
+			environments. Functioned as a level 1 Project Director over multiple customer funded programs with 
+			individual budgets in excess of \$1M and a proven track record of finishing on time and on budget.}
 			\ExperienceHeader
-			\ExperienceEntry{Jun 2018 - Present}{Senior Research Engineer}{Georgia Tech Research Institute}{Lead software engineer on a large radar development program responsible for design, development, test and integration of the software components that monitor and control the collection of high power equipment critical to a functional radar. Developed and implemented a configuration management strategy capable of tracing changes from requirement derivation through implementation and ultimately continuous delivery. Project director on multiple programs. }{--Windows Application Development --Configuration Management --Project Management}
-			\ExperienceEntry{Jun 2016 - Present}{Consultant}{Deep Fried Software}{Sole software developer responsible for creating and maintaining a web service facilitating parent teacher communication at local preschools. The service included a web portal as well as Android and iOS applications. This project was active for over a year but has since been retired due to the rise of free alternatives.}{--Full Stack Web Development	--Android Development --iOS Development}
-			\ExperienceEntry{Jun 2012 - Jun 2018}{Branch Head / Senior Research Engineer}{Georgia Tech Research Institute}{Responsible for leading a team of 8-12 software developers primarily focused on developing Microsoft Windows based desktop applications. Managed the branch staffing needs starting with backlog projections, then talent scounting through the final hiring decision. Functioned as lead developer across many of the projects, helping to establish requirements, define an architecture, then shape and implement the design. Established an agile culture requiring daily communication within the team as well as continuous integration and delivery. Managed multiple programs as a level 1 project director.}{--Windows Application Development --Team Management --Project Management}
-			\ExperienceEntry{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Program Manager of the Tactical Aircraft Defensive Suite (TADS) Program which consisted of a continually evolving portfolio of studies intended to improve integration among the individual systems comprising the Electronic Warfare suite on-board a set of legacy air platforms. Responsibilities included general program oversight, customer communication and personal participation in a number of the studies. Studies spanned the gamut from hardware-in-the-loop lab testing, range testing, software development and theoretical studies. Hosted a bi-annual TADS conference with an audience comprised of 40+ attendees from Government and Industry.}{--System Engineering --Team Management --Project Management }
-			\ExperienceEntry{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for an EW integration subsystem onboard legacy airborne tactical platforms. Provided general System Engineering support for multiple OFP releases for the same EW integration subsystem. Functioned as a level 1 project director over a program culminating in a major release of the subsystem OFP.}{--Windows Application Development --System Engineering --Project Management}
+			\ExperienceEntry{Mar 2023 - Present}
+			{Branch Head / Senior Research Engineer}
+			{Georgia Tech Research Institute}
+			{Functional leader of a team of 10 engineers managing a portfolio of software products across a variety of
+			of development and deployment environments. Our team and portfolio span a wide breadth of skillsets ranging 
+			from time-critical applications running hyper-parellellized pipelines to human centric user interfaces
+			developed for both desktop and web environments. Established an agile culture within the team facilitating
+			periodic planning meetings, daily scrums and retrospectives. Authored and oversaw the employment of our 
+			development and deployment pipelines that enable our continuous integration and testing across all work products. 
+			Successfully managed multiple programs with budgets in excess of \$1M from inception through final delivery. 
+			Nurtured multiple customer relationships that have resulted in many awards in excess of \$1M. }
+			{--Project Management --Team Leadership --Software Architect --Program Development}
+			\ExperienceEntry{Jun 2018 - Mar 2023}
+			{Senior Research Engineer}
+			{Georgia Tech Research Institute}
+			{Lead software engineer on a large radar development program responsible for design, development, test 
+			and integration of the software components that monitor and control the collection of high power equipment 
+			critical to a functional radar. Developed and implemented a configuration management strategy capable of 
+			tracing changes from requirement derivation through implementation and ultimately continuous delivery. 
+			Project director on multiple programs. Primary author of a Software Development Kit aiming to enable the 
+			development of a library of interchangeable Radar algorithms supporting the expansion to a software 
+			reconfigurable radar system. }
+			{--Windows Application Development --Configuration Management --Project Management}
+			\ExperienceEntry{Jun 2016 - Present}
+			{Consultant}
+			{Deep Fried Software}
+			{Sole software developer responsible for creating and maintaining a web service facilitating parent 
+			teacher communication at local preschools. The service included a web portal as well as Android and 
+			iOS applications. This project was active for over a year but has since been retired due to the rise 
+			of free alternatives.}
+			{--Full Stack Web Development	--Android Development --iOS Development --Python Development}
+			\ExperienceEntry{Jun 2012 - Jun 2018}
+			{Branch Head / Senior Research Engineer}
+			{Georgia Tech Research Institute}
+			{Responsible for leading a team of 8-12 software developers primarily focused on developing Microsoft 
+			Windows based desktop applications. Managed the branch staffing needs starting with backlog projections, 
+			then talent scounting through the final hiring decision. Functioned as lead developer across many of the 
+			projects, helping to establish requirements, define an architecture, then shape and implement the design. 
+			Established an agile culture requiring daily communication within the team as well as continuous 
+			integration and delivery. Managed multiple programs as a level 1 project director.}
+			{--Windows Application Development --Team Management --Project Management}
 			\vfill
 		}
 	}
@@ -291,16 +359,28 @@
 \begin{minipage}[t]{0.25\linewidth}
 	\colorbox{myLightGray}{
 	\vbox to 9.8in{
-			\PersonalData{58 Northcutt St.}{Marietta, GA 30064}{404.903.1269}{gte941y@gmail.com}
+			\PersonalData{58 Northcutt St.}{Marietta, GA 30064}{404.903.1269}{justinrfox@hotmail.com}
 			\KeySkills{Software Development}{Program Management}{Team Management}{System Engineering}{Development/Operations (DevOps)}
 			\Platforms{Windows Desktop}{iOS}{Windows Mobile}{Android}{Postgres}{Linux}
 			\DeveloperTools{Git}{Atlassian Suite}{Visual Studio}{Android Studio}{Jenkins}{Google Cloud}{Docker}{Virtualbox}
 			\Languages{}
+			\Interests{Radar Design}{High Performance Computing}{Developer Productivity}
 			\Certifications{Certified Scrum Master}
 			\Education
 			\References
 			\vfill
 		}
+	}
+\end{minipage}%
+\newpage
+\noindent
+\begin{minipage}[t]{0.99\linewidth}
+	\colorbox{myWhite}{
+	\vbox to 9.8in{
+		\ExperienceEntryFullWidth{Jun 2007 - Jun 2012}{Research Engineer II}{Georgia Tech Research Institute}{Program Manager of the Tactical Aircraft Defensive Suite (TADS) Program which consisted of a continually evolving portfolio of studies intended to improve integration among the individual systems comprising the Electronic Warfare suite on-board a set of legacy air platforms. Responsibilities included general program oversight, customer communication and personal participation in a number of the studies. Studies spanned the gamut from hardware-in-the-loop lab testing, range testing, software development and theoretical studies. Hosted a bi-annual TADS conference with an audience comprised of 40+ attendees from Government and Industry.}{--System Engineering --Team Management --Project Management }
+		\ExperienceEntryFullWidth{Dec 2004 - Jun 2007}{Research Engineer I}{Georgia Tech Research Institute}{Assisted in the development of multiple Microsoft Windows based desktop applications designed to support hardware-in-the-loop testing and Mission Data support tools for an EW integration subsystem onboard legacy airborne tactical platforms. Provided general System Engineering support for multiple OFP releases for the same EW integration subsystem. Functioned as a level 1 project director over a program culminating in a major release of the subsystem OFP.}{--Windows Application Development --System Engineering --Project Management}
+		\vfill
+	}
 	}
 \end{minipage}%
 \end{document}%
